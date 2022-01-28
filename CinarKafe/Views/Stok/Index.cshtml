@@ -1,0 +1,37 @@
+﻿@model  IEnumerable<CinarKafe.Models.Stok>
+@{
+    ViewBag.Title = "Stok";
+}
+
+<section class="p-2">
+    <h4>Stok</h4>
+    <hr />
+    @if(Model.Count() == 0)
+    {
+        <h4 class="text-center text-success mt-2">Stokta birşey yok</h4>
+    }
+    else
+    {
+            <table class="table table-bordered table-hover mt-3">
+        <thead>
+            <tr>
+                <th>Ürün adı</th>
+                <th>Fiyat</th>
+                <th>Stok Miktari</th>
+                <th>Kategori</th>
+            </tr>
+        </thead>
+        <tbody>
+         @foreach(var data in Model) {
+            <tr>
+                <td>@data.Urun.UrunAdi</td>
+                <td>@data.Urun.Fiyat</td>
+                <td>@data.Urun.StokMiktari</td>
+                <td>@data.Urun.UrunKategorisi.KategoriAdi</td>
+            </tr>
+         }
+        </tbody>
+    </table>
+    }
+</section>
+

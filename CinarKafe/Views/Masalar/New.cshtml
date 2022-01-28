@@ -1,0 +1,30 @@
+﻿@model CinarKafe.Models.ViewModels.MasaFormViewModel
+@{
+    ViewBag.Title = "Yeni Masa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <section class="p-2">
+        <h2>Yeni Masa</h2>
+        <hr />
+        @using (Html.BeginForm("Save", "Masalar"))
+        {
+            @Html.ValidationSummary(true, "Lütfen formu kontrol edin", new { @class = "summary-style text-danger" })
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.MasaDurumuId)
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.MasaNumarasi)
+                @Html.TextBoxFor(m => m.MasaNumarasi, new { @class = "form-control", @type = "number", @onkeypress = "validateInput(event);" })
+                @Html.ValidationMessageFor(m => m.MasaNumarasi)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.MasaKapasitesi)
+                @Html.TextBoxFor(m => m.MasaKapasitesi, new { @class = "form-control", @type = "number", @onkeypress = "validateInput(event);" })
+                @Html.ValidationMessageFor(m => m.MasaKapasitesi)
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Kaydet" />
+            </div>
+        }
+    </section>

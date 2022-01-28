@@ -1,0 +1,86 @@
+﻿@model IEnumerable<CinarKafe.Models.Masa>
+@{
+    ViewBag.Title = "Masalar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <section class="p-2">
+        <h2>Masalar</h2>
+        <hr />
+        <!--- Grid view -->
+        <div class="mt-2 d-flex flex-row">
+           <div class="mr-2 ml-2 d-flex flex-row">
+               <div style="height:30px; width:30px; background:#0026ff;"></div>
+               <h5 class="ml-2">Mevcut</h5>
+           </div>
+           <div class="mr-2 ml-2 d-flex flex-row">
+               <div style="height:30px; width:30px; background:#5e4c5a;"></div>
+               <h5 class="ml-2">Meşgul</h5>
+           </div>
+           <div class="mr-2 ml-2">
+               @Html.ActionLink("Yeni masa ekle", "New", "Masalar", new { @class = "btn btn-primary" })
+           </div>
+        </div>
+
+        <ul class="nav nav-tabs mt-3">
+            <li class="active mr-2"><a data-toggle="tab" href="#list__view">List view</a></li>
+            <li class="ml-2"><a data-toggle="tab" href="#grid__view">Grid view</a></li>
+        </ul>
+
+        <div class="tab-content mt-3 ml-2">
+            <div id="grid__view" class="tab-pane fade">
+                @if (Model.Count() == 0)
+                {
+                    <h5 class="text-success text-center mt-2">Masa Yok</h5>
+                }
+                else
+                {
+                    <h5>Masa Grid view</h5>
+                    <div class="row row-cols-lg-5">
+                        @foreach (var masa in Model)
+                        {
+                            <div class="card text-center col-md-6 col-sm-12 col-3 mr-2 mb-2 text-white @masa.MasaDurumu.DurumAdi" style="width:3rem;">
+                                <div class="card-body">
+                                    <h5>@masa.MasaNumarasi.ToString()</h5>
+                                    <p class="card-text">Masa Durumu: @masa.MasaDurumu.DurumAdi</p>
+                                    @Html.ActionLink("Göster", "Detail", "Masalar", new { id = masa.MasaNumarasi, @class = "btn btn-warning" }, null)
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+            <div id="list__view" class="tab-pane fade show active">
+                @if (Model.Count() == 0)
+                {
+                    <h5 class="text-success text-center mt-2">Masa Yok</h5>
+                }
+                else
+                {
+                    <h3>Masa listesi</h3>
+                    <table id="masaTable" class="table table-bordered table-hover mt-2">
+                        <thead>
+                            <tr>
+                                <th>Masa Numara</th>
+                                <th>Masa Kapasitesi</th>
+                                <th>Masa Durumu</th>
+                                <th class="text-danger">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var masa in Model)
+                            {
+                                <tr>
+                                    <td>@Html.ActionLink(masa.MasaNumarasi.ToString(), "Detail", "Masalar", new { id = masa.MasaNumarasi }, null)</td>
+                                    <td>@masa.MasaKapasitesi</td>
+                                    <td class="text-@masa.MasaDurumu.DurumAdi">@masa.MasaDurumu.DurumAdi</td>
+                                    <td>
+                                        <button class="btn btn-danger js-delete" data-masa-id=@masa.Id>Sil</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>      
+    </section>

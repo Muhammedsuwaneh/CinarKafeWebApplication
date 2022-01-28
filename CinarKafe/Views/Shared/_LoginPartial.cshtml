@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNet.Identity
+@if (!Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+            <a href="@Url.Action("Login", "Account", routeValues: null)" class="nav-link text-primary">
+                <span class="sideBar__Item">Giriş</span>
+                <i class="fa fa-sign-in-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Register", "Account", routeValues: null)" class="nav-link text-primary">
+                <span class="sideBar__Item text-primary">Yeni Hesap aç</span>
+                <i class="fa fa-user-plus text-primary" aria-hidden="true"></i>
+            </a>
+        </li>
+        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+    </ul>
+}

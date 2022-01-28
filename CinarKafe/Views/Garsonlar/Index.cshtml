@@ -1,0 +1,49 @@
+﻿@model  IEnumerable<CinarKafe.Models.Garson>
+@{
+    ViewBag.Title = "Garsonlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <section>
+        <h2>Garsonlar</h2>
+        <hr />
+        @Html.ActionLink("Yeni garson ekle", "New", "Garsonlar", new { @class = "btn btn-primary mb-3" })
+        @if (Model.Count() == 0)
+        {
+            <h5 class="text-success text-center mt-2">Garson Yok</h5>
+        }
+        else
+        {
+            <table id="garsonTable" class="table table-hover table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>SCN</th>
+                        <th>Eposta</th>
+                        <th>Adres</th>
+                        <th>Telefon Numara</th>
+                        <th>Maaş</th>
+                        <th class="text-danger">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var garson in Model)
+                    {
+                    <tr>
+                        <td>@Html.ActionLink(garson.Ad, "Edit", "Garsonlar", new { id = garson.Id }, null)</td>
+                        <td>@garson.Soyad</td>
+                        <td>@garson.SCN</td>
+                        <td>@garson.Eposta</td>
+                        <td>@garson.Adres</td>
+                        <td>@garson.TelefonNumara</td>
+                        <td>@garson.Maas</td>
+                        <td>
+                            <button class="btn btn-danger js-delete" data-garson-id=@garson.Id>Sil</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </section>

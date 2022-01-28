@@ -1,0 +1,151 @@
+﻿@using Microsoft.AspNet.Identity;
+@model IEnumerable<CinarKafe.Models.Urun>
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+    <section class="p-2">
+
+        <input type="hidden" value="@User.Identity.GetUserId()" id="CurrentUserId" />
+        <!--- Grid view -->
+        <ul class="nav nav-tabs mt-3">
+            <li class="active mr-2"><a data-toggle="tab" href="#anayemek__view">Ana Yemekler</a></li>
+            <li class="ml-2"><a data-toggle="tab" href="#icecek__view">İçecekler</a></li>
+            <li class="ml-2"><a data-toggle="tab" href="#tatli__view">Tatlılar</a></li>
+        </ul>
+
+        <div class="tab-content mt-3 ml-2">
+            <div id="anayemek__view" class="tab-pane fade show active">
+                <h4>Ana Yemekler</h4>
+                <hr />
+                <div class="row row-cols-lg-5">
+                    @foreach (var urun in Model)
+                    {
+                        if (@urun.UrunKategorisi.KategoriAdi == "Ana Yemek")
+                        {
+                            <div class="product__item card col-md-6 col-sm-12 col-3 mr-2 mb-2 text-center p-1 align-items-center" style="width: 9rem; background:#fefefe;"
+                                 id="product-@urun.Id">
+                                <img id="Resim" class="card-img-top" src="~/Uploads/@urun.Resim" alt="Card image cap" style="height:10rem;">
+                                <div class="card-body">
+                                    <h5 id="UrunAdi" class="card-title">@urun.UrunAdi</h5>
+                                    <h5 id="Fiyat" class="card-title text-danger">@urun.Fiyat TL</h5>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        if (@urun.StokMiktari == 0)
+                                        {
+                                            <h5 class="text-danger">Out of stock</h5>
+                                        }
+                                        else
+                                        {
+                                            <div class="d-flex flex-row">
+                                                <i class="fa fa-plus-square mx-1 align-self-lg-center text-success product_Amount_Modifier increaseOrderButton"
+                                                   id="increaseOrderButton-@urun.Id"></i>
+                                                <input class="mx-1" id="Adet-@urun.Id" style="width:5rem;"
+                                                       disabled type="text" value="1" />
+                                                <i class="fa fa-minus-square mx-1 align-self-lg-center text-danger product_Amount_Modifier decreaseOrderButton" 
+                                                   id="decreaseOrderButton-@urun.Id"></i>
+                                            </div>
+                                            <button class="sepeteEkleButton btn btn-success mt-2 text-center" id="@urun.Id">Sepete ekle</button>
+                                        }
+                                    }
+                                    <!--- hidden fields -->
+                                    <input type="hidden" id="stokAmount" value="@urun.StokMiktari" />
+                                    <input type="hidden" id="UrunKategoriId" value="@urun.UrunKategorisi.Id" />
+                                    <input type="hidden" id="UrunKategoriAdi" value="@urun.UrunKategorisi.KategoriAdi" />
+                                    <input type="hidden" id="UserId" value="@User.Identity.GetUserId()" />
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div id="icecek__view" class="tab-pane fade">
+                <h4>İçecekler</h4>
+                <hr />
+                <div class="row row-cols-lg-5">
+                    @foreach (var urun in Model)
+                    {
+                        if (@urun.UrunKategorisi.KategoriAdi == "Içecek")
+                        {
+                           <div class="product__item card col-md-6 col-sm-12 col-3 mr-2 mb-2 text-center p-1 align-items-center" style="width: 9rem; background:#fefefe;"
+                                 id="product-@urun.Id">
+                                <img id="Resim" class="card-img-top" src="~/Uploads/@urun.Resim" alt="Card image cap" style="height:10rem;">
+                                <div class="card-body">
+                                    <h5 id="UrunAdi" class="card-title">@urun.UrunAdi</h5>
+                                    <h5 id="Fiyat" class="card-title text-danger">@urun.Fiyat TL</h5>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        if (@urun.StokMiktari == 0)
+                                        {
+                                            <h5 class="text-danger">Out of stock</h5>
+                                        }
+                                        else
+                                        {
+                                            <div class="d-flex flex-row">
+                                                <i class="fa fa-plus-square mx-1 align-self-lg-center text-success product_Amount_Modifier increaseOrderButton"
+                                                   id="increaseOrderButton-@urun.Id"></i>
+                                                <input class="mx-1" id="Adet-@urun.Id" style="width:5rem;"
+                                                       disabled type="text" value="1" />
+                                                <i class="fa fa-minus-square mx-1 align-self-lg-center text-danger product_Amount_Modifier decreaseOrderButton" 
+                                                   id="decreaseOrderButton-@urun.Id"></i>
+                                            </div>
+                                            <button class="sepeteEkleButton btn btn-success mt-2 text-center" id="@urun.Id">Sepete ekle</button>
+                                        }
+                                    }
+                                    <!--- hidden fields -->
+                                    <input type="hidden" id="stokAmount" value="@urun.StokMiktari" />
+                                    <input type="hidden" id="UrunKategoriId" value="@urun.UrunKategorisi.Id" />
+                                    <input type="hidden" id="UrunKategoriAdi" value="@urun.UrunKategorisi.KategoriAdi" />
+                                    <input type="hidden" id="UserId" value="@User.Identity.GetUserId()" />
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div id="tatli__view" class="tab-pane fade">
+                <h4>Tatlılar</h4>
+                <hr />
+                <div class="row row-cols-lg-5">
+                    @foreach (var urun in Model)
+                    {
+                        if (@urun.UrunKategorisi.KategoriAdi == "Tatli")
+                        {
+                            <div class="product__item card col-md-6 col-sm-12 col-3 mr-2 mb-2 text-center p-1 align-items-center" style="width: 9rem; background:#fefefe;"
+                                 id="product-@urun.Id">
+                                <img id="Resim" class="card-img-top" src="~/Uploads/@urun.Resim" alt="Card image cap" style="height:10rem;">
+                                <div class="card-body">
+                                    <h5 id="UrunAdi" class="card-title">@urun.UrunAdi</h5>
+                                    <h5 id="Fiyat" class="card-title text-danger">@urun.Fiyat TL</h5>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        if (@urun.StokMiktari == 0)
+                                        {
+                                            <h5 class="text-danger">Out of stock</h5>
+                                        }
+                                        else
+                                        {
+                                            <div class="d-flex flex-row">
+                                                <i class="fa fa-plus-square mx-1 align-self-lg-center text-success product_Amount_Modifier increaseOrderButton"
+                                                   id="increaseOrderButton-@urun.Id"></i>
+                                                <input class="mx-1" id="Adet-@urun.Id" style="width:5rem;"
+                                                       disabled type="text" value="1" />
+                                                <i class="fa fa-minus-square mx-1 align-self-lg-center text-danger product_Amount_Modifier decreaseOrderButton"
+                                                   id="decreaseOrderButton-@urun.Id"></i>
+                                            </div>
+                                            <button class="sepeteEkleButton btn btn-success mt-2 text-center" id="@urun.Id">Sepete ekle</button>
+                                        }
+                                    }
+                                    <!--- hidden fields -->
+                                    <input type="hidden" id="stokAmount" value="@urun.StokMiktari" />
+                                    <input type="hidden" id="UrunKategoriId" value="@urun.UrunKategorisi.Id" />
+                                    <input type="hidden" id="UrunKategoriAdi" value="@urun.UrunKategorisi.KategoriAdi" />
+                                    <input type="hidden" id="UserId" value="@User.Identity.GetUserId()" />
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </section>

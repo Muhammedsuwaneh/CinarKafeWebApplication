@@ -1,0 +1,55 @@
+﻿@model CinarKafe.Models.ViewModels.UrunFormViewModel
+@{
+    ViewBag.Title = "New";
+}
+
+    <section class="p-2">
+        <h2>Yeni Ürün</h2>
+        <hr />
+        @using (Html.BeginForm("Save", "Urunler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            @Html.ValidationSummary(true, "Lütfen formu kontrol edin", new { @class = "summary-style text-danger" })
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.Resim)
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.UrunAdi)
+                @Html.TextBoxFor(m => m.UrunAdi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.UrunAdi)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Fiyat)
+                @Html.TextBoxFor(m => m.Fiyat, new { @class = "form-control", @type = "number", @min = "1", @onkeypress = "validateInput(event);" })
+                @Html.ValidationMessageFor(m => m.Fiyat)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.StokMiktari)
+                @Html.TextBoxFor(m => m.StokMiktari, new { @class = "form-control", @type = "number", @min = "1", @onkeypress = "validateInput(event);" })
+                @Html.ValidationMessageFor(m => m.StokMiktari)
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.UrunKategorisiId)
+                @Html.DropDownListFor(m => m.UrunKategorisiId, new SelectList(Model.UrunKategorisi, "Id", "KategoriAdi"), "Kategori seçin", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.UrunKategorisiId)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Resim)
+                <input class="form-control" type="file" id="ImageData" name="ImageData" value="~/Uploads/@Model.Resim" />
+                @if(@Model.Resim != null) {
+                 <p class="text-danger">Mevcut ürünün resmi: @Model.Resim</p>
+                }
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Kaydet" />
+            </div>
+        }
+    </section>
+

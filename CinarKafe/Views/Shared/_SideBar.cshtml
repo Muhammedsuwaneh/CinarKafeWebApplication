@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNet.Identity
+
+<div class="sidebar-container">
+    <ul class="sidebar-navigation">
+        <li class="header">Menu</li>
+        <li class="active-page">
+            <a href="@Url.Action("Index", "Home")">
+
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span class="sideBar__Item">Ana Sayfa</span>
+            </a>
+        </li>
+        @if (Request.IsAuthenticated)
+        {
+            if (User.IsInRole("CanManageApplication"))
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Masalar")">
+                        <i class="fa fa-table" aria-hidden="true"></i>
+                        <span class="sideBar__Item">Masalar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Urunler")">
+                        <i class="fa fa-utensils" aria-hidden="true"></i>
+                        <span class="sideBar__Item">Ürünler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Garsonlar")">
+                        <i class="fa fa-users" aria-hidden="true"></i><span class="sideBar__Item">Garsonlar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Stok")">
+                        <i class="fa fa-file-alt" aria-hidden="true"></i>
+                        <span class="sideBar__Item">Stok</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Rapor")">
+                        <i class="fa fa-chart-bar" aria-hidden="true"></i>
+                        <span class="sideBar__Item">Rapor</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Siperisler")">
+                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                        <span class="sideBar__Item">Siperişlerim</span>
+                    </a>
+                </li>
+            }
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+                <li>
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="text-danger">
+                        <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
+                        <span class="sideBar__Item">Çıkış</span>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</div>
+
+
+
+

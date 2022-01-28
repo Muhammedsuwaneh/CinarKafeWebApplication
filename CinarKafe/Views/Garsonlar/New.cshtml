@@ -1,0 +1,54 @@
+﻿@model CinarKafe.Models.ViewModels.GarsonFormViewModel
+@{
+    ViewBag.Title = @Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+        <h2>@Model.Title</h2>
+        <hr />
+        @using (Html.BeginForm("Save", "Garsonlar"))
+        {
+            @Html.ValidationSummary(true, "Lütfen formu kontrol edin", new { @class = "summary-style text-danger" })
+            @Html.HiddenFor(m => m.Id)
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.Ad)
+                @Html.TextBoxFor(m => m.Ad, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Ad)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Soyad)
+                @Html.TextBoxFor(m => m.Soyad, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Soyad)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.SCN)
+                @Html.TextBoxFor(m => m.SCN, new { @class = "form-control", @onkeypress = "validateInput(event);" })
+                @Html.ValidationMessageFor(m => m.SCN)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Eposta)
+                @Html.TextBoxFor(m => m.Eposta, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Eposta)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.TelefonNumara)
+                @Html.TextBoxFor(m => m.TelefonNumara, new { @class = "form-control", @onkeypress = "validateInput(event);" })
+                @Html.ValidationMessageFor(m => m.TelefonNumara)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Adres)
+                @Html.TextBoxFor(m => m.Adres, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Adres)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Maas)
+                @Html.TextBoxFor(m => m.Maas, new { @class = "form-control", @type = "number", @onkeypress = "validateInput(event);" })
+                @Html.ValidationMessageFor(m => m.Maas)
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Kaydet" />
+            </div>
+        }
+</section>

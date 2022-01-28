@@ -1,0 +1,33 @@
+﻿<!Doctype html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex, follow">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Fonts/css")
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        @Html.Partial("_NavBar")
+        <div>
+            @Html.Partial("_SideBar")
+            <div class="p-3" id="content">
+                <button class="btn btn-primary" type="button">
+                    <span><i class="fa fa-arrow-left text-white"></i></span> Toggle Side Bar
+                </button>
+                @RenderBody()
+                <footer style="margin-top:100px;">
+                    <hr />
+                    <p>Copyright &copy; Çınar Kafe - @DateTime.Now.Year</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/lib")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNet.Identity
+@model CinarKafe.Models.ViewModels.HomeViewModel
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<section class="p-2">
+    <div class="row row-cols-lg-5 mt-3">
+        @foreach (var count in Model.GridViewData)
+        {
+            <div class="d-flex flex-column col-md-6 col-sm-12 col-3 grid_Visualize m-2 p-2">
+                <div class="d-flex flex-row justify-content-between">
+                    <div style="background:red;">
+                        <div class="p-2">
+                            <i class="@count.Key.Item2 fa-2x text-center"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>@count.Key.Item1</h5>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <h2>@count.Value</h2>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <h5 class="text-center">Grafik Çubuğu</h5>
+            <div>
+                <canvas id="barChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h5 class="text-center">Yuvarlak Diyagram</h5>
+            <div>
+                <canvas id="pieChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        var ctxPie = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: @Html.Raw(Json.Encode(Model.PieChartData)),
+        });
+
+        var ctxBar = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(ctxBar, {
+        type: 'bar',
+        data: @Html.Raw(Json.Encode(Model.BarChartData)),
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+              }
+           }
+        });
+    </script>
+}

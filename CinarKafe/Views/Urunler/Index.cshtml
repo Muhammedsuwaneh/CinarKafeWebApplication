@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CinarKafe.Models.Urun>
+@{
+    ViewBag.Title = "Ürünler";
+}
+
+    <section class="p-2">
+        <h2>Ürünler</h2>
+        <hr />
+        @Html.ActionLink("Yeni urun ekle", "New", "Urunler", null, new { @class = "btn btn-primary mt-2" })
+        @if (Model.Count() == 0)
+        {
+            <h5 class="text-success mt-3 text-center">Ürün yok</h5>
+        }
+        else
+        {
+            <h5 class="mt-3">Ürün listesi</h5>
+            <table class="mt-3 table table-bordered table-hover" id="urunTable">
+                <thead>
+                    <tr>
+                        <th>Urun Adi</th>
+                        <th>Fiyat (TL)</th>
+                        <th>Stok Miktari</th>
+                        <th>Kategori</th>
+                        <th class="text-danger">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var urun in Model)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(urun.UrunAdi, "Edit", "Urunler", new { id = @urun.Id }, null)</td>
+                            <td>@urun.Fiyat</td>
+                            <td>@urun.StokMiktari</td>
+                            <td>@urun.UrunKategorisi.KategoriAdi</td>
+                            <td>
+                                <button class="btn btn-danger js-delete" data-urun-id=@urun.Id>Sil</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </section>
+
