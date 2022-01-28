@@ -103,18 +103,14 @@ Below are technologies used during the development and production process
 - OAuth [Google Authentications & Authorization]
 - SSL Certificate
 
-### Database
-- MySQL Server
-- MySQL WorkBench
+### Database & Server
+- Microsoft SQL Server
+- Microsoft Azure
 
 ### Design
 - ADOBE XD [UI&UX]
 - Draw.IO [ER&UMLs]
 - Visual Studio [Development Environment]
-
-### Host
-
-- SmartASP.Net
 
 ## Contributors
 
