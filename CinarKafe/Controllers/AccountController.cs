@@ -165,13 +165,13 @@ namespace CinarKafe.Controllers
                 {
                     // temp code
                     // create roles
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
 
-                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-                    await roleManager.CreateAsync(new IdentityRole(RoleNames.CanManageApplication));
+                    //await roleManager.CreateAsync(new IdentityRole(RoleNames.CanManageApplication));
 
-                    await UserManager.AddToRoleAsync(user.Id, RoleNames.CanManageApplication);
+                    //await UserManager.AddToRoleAsync(user.Id, RoleNames.CanManageApplication);
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

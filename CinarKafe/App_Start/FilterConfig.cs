@@ -9,10 +9,11 @@ namespace CinarKafe
         {
             filters.Add(new HandleErrorAttribute());
 
-            // for authorizations
-            filters.Add(new AuthorizeAttribute());
+            //for authorizations
 
-            // for secure connections
+           filters.Add(new AuthorizeAttribute());
+
+             //for secure connections
             filters.Add(new RequireHttpsAttribute());
         }
     }

@@ -138,7 +138,6 @@ namespace CinarKafe.Controllers
 
                     var param2 = new DynamicParameters(); 
 
-                    param2.Add("@p_Id", DbType.Int32, direction: ParameterDirection.Output);
                     param2.Add("p_MasaNumarasi", masa.MasaNumarasi);
                     param2.Add("p_MasaKapasitesi", masa.MasaKapasitesi);
                     param2.Add("p_MasaDurumuId", masa.MasaDurumuId);

@@ -32,11 +32,9 @@ namespace CinarKafe.Controllers
 
             IEnumerable<Garson> data;
 
-            Garson garson = new Garson();
-
             using (IDbConnection conn = new SqlConnection(connString))
             {
-                data = conn.Query<Garson>("dbo.sp_garsonlistele", garson, commandType: CommandType.StoredProcedure);
+                data = conn.Query<Garson>("dbo.sp_garsonlistele", commandType: CommandType.StoredProcedure);
             }
 
             return View(data);
@@ -88,6 +86,8 @@ namespace CinarKafe.Controllers
                     parameters1.Add("p_Maas", garson.Maas);
 
                     parameters2.Add("@ireturnvalue", DbType.Int32, direction: ParameterDirection.ReturnValue);
+                    parameters2.Add("@SCN", garson.SCN);
+                    parameters2.Add("@Eposta", garson.Eposta);
 
                     // check if garson exist
                     cnn.Execute("dbo.fn_doesgarsonexist", parameters2, commandType: CommandType.StoredProcedure);

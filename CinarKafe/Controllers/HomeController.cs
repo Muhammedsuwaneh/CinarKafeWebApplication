@@ -303,7 +303,7 @@ namespace CinarKafe.Controllers
         /// </summary>
         /// <returns></returns>
         public int GetUrunCount()
-        {
+        { 
             string connString = Tools.GetConnectionString();
 
             int urunCount;
