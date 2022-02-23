@@ -8,7 +8,10 @@ orders based on the items selected. It is an ASP.NET MVC architecture based appl
 
 ## Prerequisites
 
-Visual Studio installed with ASP.NET, C# and MySQL for visual studio should be good for a start.
+Visual Studio installed with ASP.NET, C# and MS SQL Server for visual studio should be good for a start.
+
+- Installations
+
 
 ## Project Screenshots
 
