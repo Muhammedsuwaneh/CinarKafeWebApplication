@@ -10,9 +10,6 @@ orders based on the items selected. It is an ASP.NET MVC architecture based appl
 
 Visual Studio installed with ASP.NET, C# and MS SQL Server for visual studio should be good for a start.
 
-- Installations
-
-
 ## Project Screenshots
 
 ### Login Page 
@@ -86,34 +83,42 @@ Below are technologies used during the development and production process
 ## Techologies 
 
 ### Front-end
-- HTML5
-- CSS3
-- JavaScript ES5, ES6
-- JQuery 3
-- JQuery.Bootbox
-- Fontawesome
-- Toastr
+<div id="badges">
+  <img src="https://img.shields.io/badge/-HTML5-green" />
+  <img src="https://img.shields.io/badge/-CSS3-red" />
+  <img src="https://img.shields.io/badge/-JavaScript-white" />
+  <img src="https://img.shields.io/badge/-JQuery-orange" />
+  <img src="https://img.shields.io/badge/-Jquery.Bootbox-blue" />
+  <img src="https://img.shields.io/badge/-Fontawesome-green" />
+  <img src="https://img.shields.io/badge/-Toastr-red" />
+</div>
 
 ### Back-end 
-
-- C#
-- .Net Framework
-- ASP.NET MVC 5
-- Entity Framework 6
-- Automapper
-- Dapper Micro ORM
-- WebApi (REST APIs)
-- OAuth [Google Authentications & Authorization]
-- SSL Certificate
+<div id="badges">
+  <img src="https://img.shields.io/badge/-C#-green" />
+  <img src="https://img.shields.io/badge/-.Net Framework-red" />
+  <img src="https://img.shields.io/badge/-JavaScript-white" />
+  <img src="https://img.shields.io/badge/-ASP.NET MVC 5-orange" />
+  <img src="https://img.shields.io/badge/-Entity Framework 6-blue" />
+  <img src="https://img.shields.io/badge/-Automapper-green" />
+  <img src="https://img.shields.io/badge/-Dapper Micro ORM-red" />
+  <img src="https://img.shields.io/badge/-WebApi (REST APIs)-green" />
+  <img src="https://img.shields.io/badge/-OAuth [Google Authentications & Authorization]-red" />
+</div>
 
 ### Database & Server
-- Microsoft SQL Server
-- Microsoft Azure
+<div id="badges">
+  <img src="https://img.shields.io/badge/-Microsoft SQL Server-green" />
+  <img src="https://img.shields.io/badge/-Microsoft Azure-red" />
+</div>
 
-### Design
-- ADOBE XD [UI&UX]
-- Draw.IO [ER&UMLs]
-- Visual Studio [Development Environment]
+
+### Design & Development
+<div id="badges">
+  <img src="https://img.shields.io/badge/-ADOBE XD [UI&UX]-green" />
+  <img src="https://img.shields.io/badge/-Draw.IO [ER&UMLs]-red" />
+  <img src="https://img.shields.io/badge/-Visual Studio [Development Environment]-blue" />
+</div>
 
 ## Contributors
 
