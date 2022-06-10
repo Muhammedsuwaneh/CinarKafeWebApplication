@@ -95,7 +95,7 @@ Below are technologies used during the development and production process
 
 ### Back-end 
 <div id="badges">
-  <img src="https://img.shields.io/badge/-C#-green" />
+  <img src="https://img.shields.io/badge/-C Sharp-green" />
   <img src="https://img.shields.io/badge/-.Net Framework-red" />
   <img src="https://img.shields.io/badge/-JavaScript-white" />
   <img src="https://img.shields.io/badge/-ASP.NET MVC 5-orange" />
